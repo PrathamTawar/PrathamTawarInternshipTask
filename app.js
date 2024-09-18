@@ -3,6 +3,16 @@ const journeySection = document.querySelector('.journeySection');
 const journeyContent = document.querySelector('.journeyContent');
 const journeyNotifs = document.querySelector('.journeyNotifs');
 const gridSection = document.querySelector('.gridSection');
+const hero = document.querySelector('.hero');
+const journeyHeading = document.querySelector('.journeyHeading');
+const footIconsContainer = document.querySelector('.footIconsContainer');
+
+let footIcons = [
+    './assets/footIcons/question-mark (2) 1.png',
+    './assets/footIcons/meeting 1.png',
+    './assets/footIcons/schedule (1) 1.png'
+]
+
 let data = {
     "_id": {
       "$oid": "63b64dc9e3b230ebb60a495d"
@@ -86,6 +96,15 @@ let data = {
     "publishedAt": 1672893847792
   }
 let task = data.tasks[0];
+
+
+function createHero()
+{
+    hero.innerHTML = `<h3>${task.task_title}</h3>
+                        <p>${task.task_description}</p>`
+}
+createHero()
+
 function handleJourney()
 {
     journeySection.classList.toggle('leftCollapse');
@@ -95,16 +114,30 @@ function handleJourney()
 }
 journeyBtn.addEventListener('click', () => {handleJourney()})
 
+function addJourney()
+{
+    journeyHeading.innerHTML = `<p>${task.task_title}</p>
+                                <ul class="journeyList">
 
+                                </ul>`
+
+    const journeryList = document.querySelector('.journeyList')
+
+    task.assets.forEach(eachAsset => {
+        journeryList.innerHTML += `<li>${eachAsset.asset_title}</li>`
+    })
+}
+addJourney()
 
 function filterCards(eachAsset)
 {
+    let html = ''
     if(eachAsset.asset_content_type === "video")
     {
-        let html =`<div id="card1" class="card cardShadow">
+        html =`<div id="card1" class="card cardShadow">
             <div class="cardHeading">
                 <h4>${eachAsset.asset_title}</h4>
-                <div class="arrowIcon">
+                <div class="arrowIcon upArrow">
                     <img src="./assets/angle-down-solid.svg" alt="">
                 </div>
             </div>
@@ -121,12 +154,12 @@ function filterCards(eachAsset)
         return html
     }
 
-    if(eachAsset.asset_content_type === "threadbuilder")
+    else if(eachAsset.asset_content_type === "threadbuilder")
     {
-        let html = `<div id="card2" class="card cardShadow">
+        html = `<div id="card2" class="card cardShadow">
             <div class="cardHeading">
                 <h4>${eachAsset.asset_title}</h4>
-                <div class="arrowIcon">
+                <div class="arrowIcon upArrow">
                     <img src="./assets/angle-down-solid.svg" alt="">
                 </div>
             </div>
@@ -147,12 +180,12 @@ function filterCards(eachAsset)
                         <form class="threadForm1" action="">
                             <div class="subThread form1inpt">
                                 <p>Sub thread 1</p>
-                                <input type="text" placeholder="Enter Text here">
+                                <textarea type="text" placeholder="Enter Text here"></textarea>
                             </div>
     
                             <div class="subInterpretation form1inpt">
                                 <p>Sub interpretation 1</p>
-                                <input type="text" placeholder="Enter Text here">
+                                <textarea type="text" placeholder="Enter Text here"></textarea>
                             </div>
                         </form>
     
@@ -174,7 +207,7 @@ function filterCards(eachAsset)
                         <form class="threadForm2" action="">
                             <div class="summary">
                                 <p>Summary for Thread A</p>
-                                <input type="text" placeholder="Enter Text here">
+                                <textarea type="text" placeholder="Enter Text here"></textarea>
                             </div>
                         </form>
                     </div>
@@ -187,12 +220,12 @@ function filterCards(eachAsset)
         return html
     }
 
-    if(eachAsset.asset_content_type === "article" && eachAsset.asset_type === "input_asset")
+    else if(eachAsset.asset_content_type === "article" && eachAsset.asset_type === "input_asset")
     {
-        let html = `<div id="card3" class="card cardShadow">
+        html = `<div id="card3" class="card cardShadow">
             <div class="cardHeading">
                 <h4>${eachAsset.asset_title}</h4>
-                <div class="arrowIcon">
+                <div class="arrowIcon upArrow">
                     <img src="./assets/angle-down-solid.svg" alt="">
                 </div>
             </div>
@@ -206,7 +239,7 @@ function filterCards(eachAsset)
                     
                     <div class="pointerTitle">
                         <p>Title</p>
-                        <input type="text">
+                        <textarea type="text"></textarea>
                     </div>
 
                     <div class="pointerContent">
@@ -235,7 +268,7 @@ function filterCards(eachAsset)
                             </div> 
                         </div>
                         
-                        <input type="text">
+                        <textarea type="text"></textarea>
                     </div>
                 </div>
              
@@ -244,9 +277,61 @@ function filterCards(eachAsset)
 
         return html;
     }
+
     else
     {
-        return 'workinprogress'
+        html = `<div id="card4" class="card cardShadow">
+            <div class="cardHeading">
+                <p style=" font-size: 0.8rem; color: rgb(163, 162, 162); position: absolute; top: 0px; left: 8px;">*content link was broken*</p>
+                <h4>${eachAsset.asset_title}</h4>
+                <div class="arrowIcon upArrow">
+                    <img src="./assets/angle-down-solid.svg" alt="">
+                </div>
+            </div>
+
+            <div class="collapsable">
+                <div class="description">
+                    <p><span class="firstWord">Description:</span>${eachAsset.asset_description}</p>
+                </div>
+    
+                <div class="threadContent">
+
+                    <div class="introContainer">
+
+                        <div class="card4Intro card4Heads">
+                            <img src="./assets/angle-down-solid.svg" class="intoArrow upArrow" alt="">
+                            <p>Introduction</p>
+                        </div>
+                        
+                        <div class="collapsableIntro">
+                            <p>The 4SA Method , How to bring a idea into progress ?</p>
+                        </div>
+
+                        <p class="more">See More</p>
+
+                    </div>
+
+                    <div class="contenContainer">
+
+                        <div class="card4Threds card4Heads">
+                            <img src="./assets/angle-down-solid.svg" class="intoArrow upArrow" alt="">
+                            <p>Thread A</p>
+                        </div>
+
+                        <div class="collapsableIntro">
+                            <p>How are you going to develop your stratergy ? Which method are you going to use to develop a stratergy ? What if the project is lengthy?</p>
+                        </div>
+
+                        <p class="more">See More</p>
+                        
+                        <div class="examples">
+                            <div class="exampleHeading card4Heads"> Example A </div>
+                            <p>You have a concept , How will you put into progress?</p>
+                        </div>
+                    </div>
+                </div>
+        </div>`
+        return html;
     }
 }
 
@@ -262,10 +347,6 @@ function showCards()
 }
 
 showCards();
-
-
-
-
 
 
 const arrowIcon = document.querySelectorAll('.arrowIcon');
@@ -301,3 +382,14 @@ arrowIcon.forEach((arrow) => {
     let parentId = arrow.parentElement.parentElement.id;
     arrow.addEventListener('click', () => {handleCards(arrow, parentId)})
 });
+
+
+function createFoot()
+{
+    footIcons.forEach((icon) => {
+        footIconsContainer.innerHTML += `<div class="footIcons">
+                <img src="${icon}" alt="">
+            </div>`
+    })
+}
+createFoot()

@@ -16,6 +16,7 @@ body {
     font-family: 'Poppins';
     background-color: white;
     color: black;
+    position: relative;
 }
 
 /* *-----------------------NAV--------------------- */
@@ -24,7 +25,7 @@ nav
     width: 100%;
     height: 90px;
 
-    position: relative;
+    
     
     display: flex;
     flex-wrap: wrap;
@@ -179,9 +180,11 @@ nav
     height: 394px;
     width: 95px;
 
+    background-color: white;
+
     position: absolute;
     right: 0;
-    top: 11%;
+    top: 6%;
 
     
     box-shadow: 0px 2px 5px 0px;
@@ -301,7 +304,6 @@ main
     transition: 0.2s;
 
     overflow: hidden;
-
 }
 
 .cardHeading
@@ -351,14 +353,16 @@ main
 .collapse
 {
     transform: translateY(-100%);
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 .collapsable
 {
-    height: 100%;
+    height: 90%;
     transition: 0.2s ease-in-out;
+    overflow-y: auto;
 }
+
 .description 
 {
     height: 90px;
@@ -385,7 +389,7 @@ main
 iframe
 {
     width: 100%;
-    height: 60%;
+    height: 50%;
     border: none;
     outline: none;
 }
@@ -404,7 +408,7 @@ iframe
 .threadContent
 {
     padding: 0px 3.7rem;
-    height: 100%;
+    height: fit-content;
 }
 
 .threads img
@@ -420,8 +424,6 @@ iframe
     align-items: center;
     justify-content: space-between;
     margin-top: 30px;   
-
- 
 }
 
 .form1inpt
@@ -447,7 +449,7 @@ iframe
     
 }
 
-.form1inpt input
+.form1inpt textarea
 {
     border-radius: 10px;
     width: 100%;
@@ -461,7 +463,7 @@ iframe
 }
 
 
-.form1inpt input::placeholder
+.form1inpt textarea::placeholder
 {
     align-self: flex-start;
 }
@@ -576,7 +578,7 @@ iframe
     width: 100%;
 }
 
-.summary input
+.summary textarea
 {
     border-radius: 10px;
     width: 100%;
@@ -589,7 +591,7 @@ iframe
     padding-left: 12px;
 }
 
-.summary input::placeholder
+.summary textarea::placeholder
 {
     align-self: flex-start;
 }
@@ -616,8 +618,9 @@ iframe
     font-weight: 600;
 }
 
-.pointerTitle input
+.pointerTitle textarea
 {
+    padding: 3%;
     border-radius: 10px;
     width: 100%;
     height: 100%;
@@ -642,8 +645,9 @@ iframe
     font-weight: 600;
 }
 
-.pointerContent input
+.pointerContent textarea
 {
+    padding: 3%;
     border-radius: 0px 0px 10px 10px;
     width: 100%;
     height: 250px;
@@ -706,6 +710,83 @@ iframe
 
 
 
+
+/* *----------------------------CARD4---------------------------- */
+
+.introContainer
+{   
+    height: 200px;
+    margin-top: 1px;
+    position: relative;
+}
+
+.card4Heads
+{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.card4Intro
+{
+    background-color: var(--primary-color);
+}
+
+.intoArrow
+{
+    height: 22px;
+    width: 22px;
+
+    cursor: pointer;
+}
+
+.more
+{
+    margin-left: 80%;
+    cursor: pointer;
+}
+
+.collapsableIntro
+{
+    margin: 20px 15px;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+
+
+
+.contenContainer
+{
+    position: relative;
+}
+
+.card4Threds
+{
+    border: 1px solid rgba(217, 215, 215, 1);
+}
+
+.examples
+{
+    margin-top: 20px;
+    margin-left: 40px; 
+}
+
+.exampleHeading
+{
+    border: 1px solid rgba(217, 215, 215, 1);
+}
+
+.examples p
+{
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
 /* !----------------------GRID-SECTION-OVER-------------------------- */
 
 
@@ -716,3 +797,37 @@ iframe
 
 
 /* !---------------------MAIN-OVER--------------------- */
+
+
+
+
+/* *---------------------FOOT-ICONS--------------------- */
+.footIconsContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    position: absolute;
+
+    right: 1%;
+    bottom: 1%;
+}
+
+.footIcons
+{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footIcons img
+{
+    height: 50px;
+}
+/* !---------------------FOOT-ICONS-OVER-------------------- */
